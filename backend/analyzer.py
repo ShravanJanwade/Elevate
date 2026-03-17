@@ -6,6 +6,7 @@ model = None
 
 
 def _get_model():
+    """Lazy-load the sentence transformer model so startup is faster."""
     global model
     if model is None:
         model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -32,7 +33,10 @@ COMMON_SKILLS = [
 
 
 def extract_keywords_from_jd(jd_text):
-    
+    """
+    Pull out relevant keywords and skill terms from the job description.
+    Uses a combination of known skills lookup and simple noun-phrase extraction.
+    """
     jd_lower = jd_text.lower()
     found_skills = []
 
@@ -59,7 +63,14 @@ def extract_keywords_from_jd(jd_text):
 
 
 def keyword_score(resume_sections, jd_text):
-    
+    """
+    Check which JD keywords appear in the resume.
+
+    Returns a dict with:
+        - match_percentage (float 0-100)
+        - matched (list of found keywords)
+        - missing (list of keywords not found)
+    """
     primary_keywords, secondary_keywords = extract_keywords_from_jd(jd_text)
     all_keywords = primary_keywords + secondary_keywords
 
@@ -88,7 +99,14 @@ def keyword_score(resume_sections, jd_text):
 
 
 def semantic_score(resume_sections, jd_text):
-    
+    """
+    Compute how well the resume content aligns with the job description
+    in meaning, using sentence embeddings and cosine similarity.
+
+    Returns a dict with:
+        - overall_score (float 0-100)
+        - bullet_scores (list of dicts with bullet text and similarity)
+    """
     encoder = _get_model()
     bullets = resume_sections.get("bullet_points", [])
 
@@ -122,10 +140,48 @@ def semantic_score(resume_sections, jd_text):
     }
 
 
+def section_scores(resume_sections, jd_text):
+    """
+    Score each resume section independently against the JD using SBERT.
+
+    Returns a list of dicts sorted by score descending:
+        - section (str): normalized section name
+        - score (float 0-100): cosine similarity × 100
+        - preview (str): first 150 chars of the section text
+    """
+    encoder = _get_model()
+
+    skip_keys = {"raw_text", "bullet_points", "header"}
+    sections_to_score = {
+        k: v
+        for k, v in resume_sections.items()
+        if k not in skip_keys and isinstance(v, str) and len(v.strip()) > 20
+    }
+
+    if not sections_to_score:
+        return []
+
+    jd_embedding = encoder.encode([jd_text])
+    results = []
+
+    for section_name, section_text in sections_to_score.items():
+        sec_embedding = encoder.encode([section_text])
+        sim = cosine_similarity(sec_embedding, jd_embedding).flatten()[0]
+        results.append({
+            "section": section_name,
+            "score": round(float(sim) * 100, 1),
+            "preview": section_text[:150].strip(),
+        })
+
+    results.sort(key=lambda x: x["score"], reverse=True)
+    return results
+
+
 def full_analysis(resume_sections, jd_text):
-    
+    """Run keyword, semantic, and section-level analysis; return combined results."""
     kw_result = keyword_score(resume_sections, jd_text)
     sem_result = semantic_score(resume_sections, jd_text)
+    sec_result = section_scores(resume_sections, jd_text)
 
     combined_score = (kw_result["match_percentage"] * 0.4) + (sem_result["overall_score"] * 0.6)
 
@@ -133,4 +189,5 @@ def full_analysis(resume_sections, jd_text):
         "overall_score": round(combined_score, 1),
         "keyword_analysis": kw_result,
         "semantic_analysis": sem_result,
+        "section_scores": sec_result,
     }
