@@ -1,0 +1,172 @@
+[
+  {
+    "id": "pair_01",
+    "role": "Software Engineering",
+    "resume_text": "Senior software engineer with 6 years of experience building scalable backend services.",
+    "job_description": "We are looking for a backend engineer experienced in distributed systems, Python, and cloud infrastructure on AWS. You will design and build high-performance APIs.",
+    "relevant_bullets": [
+      "Engineered RESTful APIs in Python/Flask serving 2M+ daily requests with sub-50ms latency",
+      "Reduced infrastructure costs by 35% by migrating monolith to AWS Lambda microservices",
+      "Optimized database query performance by 60% through indexing and query plan analysis",
+      "Implemented CI/CD pipelines using GitHub Actions, cutting deployment time from 2 hours to 15 minutes"
+    ],
+    "irrelevant_bullets": [
+      "Designed marketing email templates increasing open rates by 12%",
+      "Organized team building events and coordinated office logistics",
+      "Managed social media accounts and grew follower count by 500"
+    ]
+  },
+  {
+    "id": "pair_02",
+    "role": "Software Engineering",
+    "resume_text": "Full-stack developer specializing in React and Node.js applications.",
+    "job_description": "Seeking a frontend engineer proficient in React, TypeScript, and modern UI frameworks to build responsive web applications and improve user experience.",
+    "relevant_bullets": [
+      "Built responsive React dashboards used by 50k+ monthly active users",
+      "Migrated codebase to TypeScript, reducing production bugs by 40%",
+      "Improved web application load time by 55% through code splitting and lazy loading",
+      "Developed reusable component library adopted across 4 internal product teams"
+    ],
+    "irrelevant_bullets": [
+      "Configured network switches and managed on-premise server rack",
+      "Conducted quarterly financial audits and prepared tax documentation",
+      "Trained new employees on HR policies and onboarding procedures"
+    ]
+  },
+  {
+    "id": "pair_03",
+    "role": "Data Science / ML",
+    "resume_text": "Data scientist with expertise in machine learning model development and deployment.",
+    "job_description": "Looking for a machine learning engineer to build predictive models, optimize algorithms, and deploy models into production pipelines using Python and cloud platforms.",
+    "relevant_bullets": [
+      "Developed a churn prediction model using gradient boosting, achieving 87% AUC on holdout set",
+      "Streamlined feature engineering pipeline reducing model training time by 45%",
+      "Deployed ML models to production via Docker containers on GCP, handling 500k daily predictions",
+      "Applied NLP techniques to classify customer support tickets, automating 30% of routing"
+    ],
+    "irrelevant_bullets": [
+      "Managed inventory procurement and coordinated with suppliers for hardware orders",
+      "Wrote press releases and handled media inquiries for product launches",
+      "Processed accounts payable and reconciled monthly expense reports"
+    ]
+  },
+  {
+    "id": "pair_04",
+    "role": "Data Science / ML",
+    "resume_text": "ML researcher focused on deep learning and computer vision applications.",
+    "job_description": "Seeking a deep learning researcher to develop computer vision models for image recognition tasks, with experience in PyTorch and model optimization for edge deployment.",
+    "relevant_bullets": [
+      "Architected a convolutional neural network achieving 94% accuracy on custom image classification dataset",
+      "Reduced model size by 70% using knowledge distillation for deployment on mobile edge devices",
+      "Implemented transformer-based vision model fine-tuning using PyTorch, improving baseline by 8%",
+      "Published research on efficient neural architecture search at top-tier ML conference"
+    ],
+    "irrelevant_bullets": [
+      "Coordinated logistics for annual company retreat attended by 200 employees",
+      "Created brand identity guidelines and managed vendor relationships",
+      "Handled customer complaints and resolved billing disputes"
+    ]
+  },
+  {
+    "id": "pair_05",
+    "role": "Product Management",
+    "resume_text": "Product manager with 5 years of experience launching B2B SaaS products.",
+    "job_description": "We need a product manager to define product vision, work cross-functionally with engineering and design, prioritize roadmap features based on user research, and drive product-led growth.",
+    "relevant_bullets": [
+      "Led roadmap prioritization for 3 product lines using data-driven frameworks, resulting in 25% revenue growth",
+      "Conducted 40+ user interviews to identify pain points, directly informing 6 major feature releases",
+      "Collaborated with engineering and design to ship mobile app MVP in 90 days under budget",
+      "Defined OKRs and success metrics aligned with company strategy, tracked weekly with stakeholders"
+    ],
+    "irrelevant_bullets": [
+      "Maintained database backups and performed nightly server patching",
+      "Designed circuit boards and tested embedded firmware for IoT devices",
+      "Filed legal documents and assisted with contract negotiations"
+    ]
+  },
+  {
+    "id": "pair_06",
+    "role": "Product Management",
+    "resume_text": "Growth-focused product manager with experience in consumer mobile applications.",
+    "job_description": "Looking for a product manager with strong analytical skills to drive user acquisition, retention, and monetization strategies for a consumer app with 10M+ users.",
+    "relevant_bullets": [
+      "Drove 40% improvement in Day-7 retention through onboarding flow redesign backed by A/B testing",
+      "Increased in-app purchase conversion rate by 22% via personalized recommendation engine",
+      "Analyzed funnel drop-off using Mixpanel and SQL, identifying friction points that reduced churn by 15%",
+      "Launched subscription tier that generated $2M ARR within 6 months of release"
+    ],
+    "irrelevant_bullets": [
+      "Performed manual QA testing for embedded systems on manufacturing floor",
+      "Prepared annual tax filings and managed payroll processing",
+      "Operated CNC machinery and maintained production line equipment"
+    ]
+  },
+  {
+    "id": "pair_07",
+    "role": "Marketing",
+    "resume_text": "Digital marketing specialist with expertise in content strategy and paid media.",
+    "job_description": "Seeking a digital marketing manager to oversee SEO, content marketing, and paid acquisition campaigns to drive brand awareness and lead generation for a B2B tech company.",
+    "relevant_bullets": [
+      "Grew organic search traffic by 120% in 12 months through technical SEO and content optimization",
+      "Managed $500k Google Ads budget achieving 3.2x ROAS across 15 campaigns",
+      "Launched content marketing program producing 30 articles/month, generating 5k MQLs quarterly",
+      "Implemented marketing automation workflows in HubSpot, increasing lead nurture conversion by 35%"
+    ],
+    "irrelevant_bullets": [
+      "Architected microservices backend using Kubernetes and service mesh",
+      "Performed statistical analysis on genomic sequencing data using R",
+      "Installed and configured enterprise network firewalls and VPN gateways"
+    ]
+  },
+  {
+    "id": "pair_08",
+    "role": "Marketing",
+    "resume_text": "Brand marketing manager with experience in consumer goods and social media campaigns.",
+    "job_description": "We are looking for a brand manager to develop and execute brand strategy, manage social media presence, create compelling campaigns, and measure brand health metrics.",
+    "relevant_bullets": [
+      "Spearheaded brand refresh campaign that increased unaided awareness by 18% in target demographic",
+      "Grew Instagram following from 80k to 350k through influencer partnerships and organic content strategy",
+      "Produced video ad campaign achieving 12M impressions and 8% engagement rate",
+      "Tracked brand health KPIs including NPS and share-of-voice using Nielsen and Brandwatch"
+    ],
+    "irrelevant_bullets": [
+      "Developed REST APIs and integrated third-party payment processors",
+      "Managed cloud infrastructure costs and optimized AWS EC2 instance types",
+      "Conducted penetration testing and wrote security assessment reports"
+    ]
+  },
+  {
+    "id": "pair_09",
+    "role": "Finance",
+    "resume_text": "Financial analyst with 4 years in investment banking and corporate finance.",
+    "job_description": "Seeking a financial analyst to build financial models, conduct valuation analysis, prepare investment memos, and support M&A due diligence processes.",
+    "relevant_bullets": [
+      "Built DCF and comparable company analysis models to support $200M acquisition recommendation",
+      "Prepared weekly investor reports synthesizing portfolio performance across 12 holdings",
+      "Led due diligence process for 3 acquisitions, coordinating cross-functional teams and external advisors",
+      "Developed scenario analysis models quantifying revenue sensitivity to market conditions"
+    ],
+    "irrelevant_bullets": [
+      "Deployed containerized applications using Docker Compose and Kubernetes Helm charts",
+      "Designed user interface wireframes and conducted usability testing sessions",
+      "Managed social media ad campaigns and optimized cost-per-click metrics"
+    ]
+  },
+  {
+    "id": "pair_10",
+    "role": "Operations",
+    "resume_text": "Operations manager with experience in supply chain optimization and process improvement.",
+    "job_description": "Looking for an operations manager to streamline supply chain processes, manage vendor relationships, improve operational efficiency, and implement process improvement initiatives.",
+    "relevant_bullets": [
+      "Reduced supply chain lead time by 30% by renegotiating contracts with 8 key suppliers",
+      "Implemented Lean Six Sigma methodology, eliminating $1.2M in annual waste across 3 facilities",
+      "Automated procurement workflows using ERP system, saving 20 hours of manual work per week",
+      "Managed cross-functional team of 15 to deliver warehouse optimization project 2 weeks ahead of schedule"
+    ],
+    "irrelevant_bullets": [
+      "Developed machine learning models for natural language processing tasks",
+      "Wrote JavaScript React components and integrated GraphQL APIs",
+      "Created paid media campaigns and managed Google Analytics attribution"
+    ]
+  }
+]
