@@ -1,14 +1,22 @@
 """
 Evaluation script for Elevate semantic scoring.
 
+Now evaluates with:
+  - Upgraded bi-encoder (all-mpnet-base-v2)
+  - Cross-encoder reranking (ms-marco-MiniLM-L-6-v2)
+  - Calibrated score mapping
+  - Multiple threshold sweep
+
 Usage:
     python backend/evaluation/run_eval.py
     python backend/evaluation/run_eval.py --threshold 0.45
+    python backend/evaluation/run_eval.py --sweep
     python backend/evaluation/run_eval.py --threshold 0.4 --save
 """
 
 import argparse
 import json
+import math
 import os
 import sys
 from pathlib import Path
@@ -16,8 +24,9 @@ from pathlib import Path
 # Allow running from project root
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer, CrossEncoder
 
 DATASET_PATH = Path(__file__).parent / "eval_dataset.json"
 
@@ -27,8 +36,11 @@ def load_dataset():
         return json.load(f)
 
 
-def evaluate(threshold: float = 0.4):
-    model = SentenceTransformer("all-MiniLM-L6-v2")
+def evaluate(threshold: float = 0.4, use_cross_encoder: bool = True):
+    """Run evaluation with bi-encoder + optional cross-encoder reranking."""
+    bi_encoder = SentenceTransformer("all-mpnet-base-v2")
+    cross_encoder = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2") if use_cross_encoder else None
+
     dataset = load_dataset()
 
     aggregate_tp = aggregate_fp = aggregate_fn = 0
@@ -41,11 +53,22 @@ def evaluate(threshold: float = 0.4):
         all_bullets = relevant + irrelevant
         labels = [1] * len(relevant) + [0] * len(irrelevant)
 
-        jd_emb = model.encode([jd])
-        bullet_embs = model.encode(all_bullets)
-        similarities = cosine_similarity(bullet_embs, jd_emb).flatten()
+        # Bi-encoder scores
+        jd_emb = bi_encoder.encode([jd])
+        bullet_embs = bi_encoder.encode(all_bullets)
+        bi_sims = cosine_similarity(bullet_embs, jd_emb).flatten()
 
-        predictions = [1 if s >= threshold else 0 for s in similarities]
+        if cross_encoder:
+            # Cross-encoder reranking
+            pairs = [(bullet, jd) for bullet in all_bullets]
+            cross_raw = cross_encoder.predict(pairs)
+            cross_sims = np.array([1.0 / (1.0 + math.exp(-s)) for s in cross_raw])
+            # Combine: 35% bi-encoder + 65% cross-encoder
+            combined = 0.35 * bi_sims + 0.65 * cross_sims
+        else:
+            combined = bi_sims
+
+        predictions = [1 if s >= threshold else 0 for s in combined]
 
         tp = sum(1 for p, l in zip(predictions, labels) if p == 1 and l == 1)
         fp = sum(1 for p, l in zip(predictions, labels) if p == 1 and l == 0)
@@ -77,26 +100,120 @@ def evaluate(threshold: float = 0.4):
         "recall": round(agg_recall, 3),
         "f1": round(agg_f1, 3),
         "num_pairs": len(dataset),
+        "cross_encoder": use_cross_encoder,
     }
 
 
 def print_table(per_pair, aggregate):
-    col_widths = [10, 30, 12, 12, 12]
-    header = ["Pair ID", "Role", "Precision", "Recall", "F1"]
-    sep = "-" * sum(col_widths + [3 * len(col_widths)])
+    """Print evaluation results in a rich table format."""
+    try:
+        from rich.console import Console
+        from rich.table import Table
+        from rich.panel import Panel
+        from rich import box
 
-    print(f"\nEvaluation Results  (threshold = {aggregate['threshold']})")
-    print(sep)
-    print("  ".join(h.ljust(w) for h, w in zip(header, col_widths)))
-    print(sep)
-    for r in per_pair:
-        row = [r["id"], r["role"], str(r["precision"]), str(r["recall"]), str(r["f1"])]
-        print("  ".join(v.ljust(w) for v, w in zip(row, col_widths)))
-    print(sep)
-    agg_row = ["AGGREGATE", f"({aggregate['num_pairs']} pairs)", str(aggregate['precision']), str(aggregate['recall']), str(aggregate['f1'])]
-    print("  ".join(v.ljust(w) for v, w in zip(agg_row, col_widths)))
-    print(sep)
-    print()
+        console = Console()
+
+        console.print()
+        method = "Bi-Encoder + Cross-Encoder" if aggregate["cross_encoder"] else "Bi-Encoder Only"
+        console.print(Panel(
+            f"[bold]Threshold:[/] {aggregate['threshold']}  |  [bold]Method:[/] {method}",
+            title="[bold bright_magenta]Elevate Evaluation[/]",
+            border_style="bright_magenta",
+        ))
+
+        table = Table(box=box.ROUNDED, show_header=True, header_style="bold white")
+        table.add_column("Pair ID", width=10)
+        table.add_column("Role", width=25)
+        table.add_column("Precision", width=12, justify="center")
+        table.add_column("Recall", width=12, justify="center")
+        table.add_column("F1", width=12, justify="center")
+
+        for r in per_pair:
+            f1_color = "green" if r["f1"] >= 0.8 else ("yellow" if r["f1"] >= 0.5 else "red")
+            table.add_row(
+                r["id"], r["role"],
+                str(r["precision"]), str(r["recall"]),
+                f"[{f1_color}]{r['f1']}[/{f1_color}]",
+            )
+
+        # Aggregate row
+        f1_color = "green" if aggregate["f1"] >= 0.8 else ("yellow" if aggregate["f1"] >= 0.5 else "red")
+        table.add_row(
+            "[bold]TOTAL[/]",
+            f"[bold]({aggregate['num_pairs']} pairs)[/]",
+            f"[bold]{aggregate['precision']}[/]",
+            f"[bold]{aggregate['recall']}[/]",
+            f"[bold {f1_color}]{aggregate['f1']}[/bold {f1_color}]",
+            style="on #1a1a2e",
+        )
+
+        console.print(table)
+        console.print()
+
+    except ImportError:
+        # Fallback: plain text table
+        col_widths = [10, 30, 12, 12, 12]
+        header = ["Pair ID", "Role", "Precision", "Recall", "F1"]
+        sep = "-" * sum(col_widths + [3 * len(col_widths)])
+
+        print(f"\nEvaluation Results  (threshold = {aggregate['threshold']})")
+        print(sep)
+        print("  ".join(h.ljust(w) for h, w in zip(header, col_widths)))
+        print(sep)
+        for r in per_pair:
+            row = [r["id"], r["role"], str(r["precision"]), str(r["recall"]), str(r["f1"])]
+            print("  ".join(v.ljust(w) for v, w in zip(row, col_widths)))
+        print(sep)
+        agg_row = ["AGGREGATE", f"({aggregate['num_pairs']} pairs)",
+                    str(aggregate['precision']), str(aggregate['recall']), str(aggregate['f1'])]
+        print("  ".join(v.ljust(w) for v, w in zip(agg_row, col_widths)))
+        print(sep)
+        print()
+
+
+def threshold_sweep():
+    """Evaluate across multiple thresholds to find the optimal one."""
+    print("\n--- Threshold Sweep ---\n")
+
+    try:
+        from rich.console import Console
+        from rich.table import Table
+        from rich import box
+
+        console = Console()
+        table = Table(box=box.ROUNDED, title="[bold]Threshold Sweep Results[/]")
+        table.add_column("Threshold", width=12, justify="center")
+        table.add_column("Precision", width=12, justify="center")
+        table.add_column("Recall", width=12, justify="center")
+        table.add_column("F1", width=12, justify="center")
+
+        best_f1, best_thresh = 0, 0
+        for t in [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60]:
+            _, agg = evaluate(threshold=t)
+            if agg["f1"] > best_f1:
+                best_f1 = agg["f1"]
+                best_thresh = t
+            f1_color = "green" if agg["f1"] >= 0.8 else ("yellow" if agg["f1"] >= 0.5 else "red")
+            table.add_row(
+                str(t), str(agg["precision"]), str(agg["recall"]),
+                f"[{f1_color}]{agg['f1']}[/{f1_color}]",
+            )
+
+        console.print(table)
+        console.print(f"\n[bold green]Best threshold: {best_thresh} (F1 = {best_f1})[/]\n")
+
+    except ImportError:
+        best_f1, best_thresh = 0, 0
+        print(f"{'Threshold':<12} {'Precision':<12} {'Recall':<12} {'F1':<12}")
+        print("-" * 48)
+        for t in [0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60]:
+            _, agg = evaluate(threshold=t)
+            if agg["f1"] > best_f1:
+                best_f1 = agg["f1"]
+                best_thresh = t
+            print(f"{t:<12} {agg['precision']:<12} {agg['recall']:<12} {agg['f1']:<12}")
+        print(f"\nBest threshold: {best_thresh} (F1 = {best_f1})\n")
 
 
 def save_to_supabase(aggregate):
@@ -139,10 +256,18 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate Elevate semantic scoring")
     parser.add_argument("--threshold", type=float, default=0.4, help="Cosine similarity threshold (default: 0.4)")
     parser.add_argument("--save", action="store_true", help="Save results to Supabase eval_results table")
+    parser.add_argument("--sweep", action="store_true", help="Run threshold sweep to find optimal threshold")
+    parser.add_argument("--no-cross-encoder", action="store_true", help="Disable cross-encoder reranking")
     args = parser.parse_args()
 
-    per_pair, aggregate = evaluate(threshold=args.threshold)
-    print_table(per_pair, aggregate)
+    if args.sweep:
+        threshold_sweep()
+    else:
+        per_pair, aggregate = evaluate(
+            threshold=args.threshold,
+            use_cross_encoder=not args.no_cross_encoder,
+        )
+        print_table(per_pair, aggregate)
 
-    if args.save:
-        save_to_supabase(aggregate)
+        if args.save:
+            save_to_supabase(aggregate)
