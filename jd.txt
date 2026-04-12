@@ -1,0 +1,54 @@
+Job Description
+Software Engineer Intern
+
+Engineering & Integration Shared Services
+
+Who We're Looking For:
+Google is seeking an innovative and motivated Software Engineer Intern to join our growing Engineering & Integration Shared Services team. This role provides a unique opportunity to lead a self-directed, innovative project focused on next-generation solutions. As an intern, you will primarily drive an exploratory technical project from concept to working prototype, operating outside of the team's critical roadmap.
+
+Responsibilities:
+
+Innovative Project Ownership: Define the scope, design, and implement an innovative, self-directed software project, focusing on exploratory use cases (e.g., leveraging AI/ML or new integrations)
+
+Research & Prototyping: Conduct research into potential applications of existing and new technologies and finding synergy to develop a working proof-of-concept or prototype
+
+Foundational Development: Apply best practices in design, development, documentation, and testing for your project, supported by senior team members
+
+Technical Documentation: Produce clear and concise documentation detailing solution architecture, implementation, and potential business value
+
+Agile Exposure: Attend and participate in core team ceremonies (e.g., daily stand-ups, sprint reviews) to learn about the Agile Scrum development lifecycle, focusing on reporting progress for your independent project
+
+Collaboration & Communication: Work closely with developers, solution architects, and business system analysts to communicate project status, technical challenges, and findings effectively
+
+Qualifications:
+
+Education/Status: Currently enrolled in a BE/BS/B.Tech or Master's program in Computer Science, IT, or a related technical field, and must be returning to school following the completion of the internship
+
+Programming: Foundational knowledge or academic experience with one or more object oriented programming languages (e.g., Java, Python, or Node.js)
+
+Concepts: Basic understanding of API concepts (e.g., RESTful APIs) and fundamental software architecture principles
+
+Tools: Familiarity with version control systems (e.g., Git/GitHub)
+
+Agile: Awareness of Agile Scrum methodologies
+
+Documentation: Ability to write clear and concise technical documentation.
+
+Language: Fluent in English.
+
+Preferred Skills
+
+Programming: Experience with Node.js, Python, or Bash scripting is a plus
+
+Cloud: Exposure to cloud computing concepts (e.g., AWS, GCP, or Azure)
+
+Low-code/No-code & iPaaS: Understanding of iPaaS and low-code platforms (e.g., Workato, Boomi, Mulesoft)
+
+CI/CD: Basic understanding or coursework related to continuous integration/continuous deployment (CI/CD) pipelines
+
+Observability & Monitoring: Familiarity with logging and monitoring tools (e.g., Datadog, Splunk, CloudWatch)
+
+Data Management: Familiarity with cloud databases (e.g., DynamoDB, Snowflake, BigQuery, SQL)
+
+AI/ML: Demonstrated Interest in automation using AI, machine learning, or natural language processing
+
