@@ -19,3 +19,8 @@ Thumbs.db
 
 # Environment
 .env
+
+# Large Assets
+backend/data/
+*.safetensors
+frontend/dist/
