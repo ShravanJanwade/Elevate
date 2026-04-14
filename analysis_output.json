@@ -1,0 +1,582 @@
+{
+  "overall_score": 65.4,
+  "strength": "strong",
+  "interpretation": "Strong candidate for this position. Missing required skill(s): scrum. Experience level exceeds typical intern requirements.",
+  "keyword_analysis": {
+    "match_percentage": 77.7,
+    "matched": [
+      "agile",
+      "communication",
+      "documentation",
+      "git",
+      "github",
+      "java",
+      "javascript",
+      "node.js",
+      "python",
+      "rest api",
+      "teamwork",
+      "testing",
+      "aws",
+      "azure",
+      "bigquery",
+      "ci/cd",
+      "cloudwatch",
+      "datadog",
+      "dynamodb",
+      "gcp",
+      "machine learning",
+      "monitoring",
+      "mulesoft",
+      "nlp",
+      "snowflake",
+      "splunk",
+      "sql",
+      "workato"
+    ],
+    "missing": [
+      "scrum"
+    ],
+    "total_keywords": 29,
+    "primary_matched": 12,
+    "primary_total": 13,
+    "matched_details": [
+      {
+        "jd_skill": "agile",
+        "resume_skill": "teamwork (implied)",
+        "match_type": "implied",
+        "strength": 0.367,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "communication",
+        "resume_skill": "communication",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "documentation",
+        "resume_skill": "leadership",
+        "match_type": "related",
+        "strength": 0.75,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "git",
+        "resume_skill": "git",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "github",
+        "resume_skill": "github",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "java",
+        "resume_skill": "java",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "javascript",
+        "resume_skill": "javascript",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "node.js",
+        "resume_skill": "node.js",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "python",
+        "resume_skill": "python",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "rest api",
+        "resume_skill": "rest api",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "teamwork",
+        "resume_skill": "leadership",
+        "match_type": "related",
+        "strength": 0.75,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "testing",
+        "resume_skill": "testing",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 1.0
+      },
+      {
+        "jd_skill": "aws",
+        "resume_skill": "aws",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "azure",
+        "resume_skill": "aws",
+        "match_type": "related",
+        "strength": 0.75,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "bigquery",
+        "resume_skill": "postgresql",
+        "match_type": "related",
+        "strength": 0.75,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "ci/cd",
+        "resume_skill": "ci/cd",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "cloudwatch",
+        "resume_skill": "aws",
+        "match_type": "related",
+        "strength": 0.7,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "datadog",
+        "resume_skill": "devops (implied)",
+        "match_type": "implied",
+        "strength": 0.39,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "dynamodb",
+        "resume_skill": "postgresql",
+        "match_type": "related",
+        "strength": 0.75,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "gcp",
+        "resume_skill": "aws",
+        "match_type": "related",
+        "strength": 0.75,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "machine learning",
+        "resume_skill": "pytorch",
+        "match_type": "related",
+        "strength": 0.65,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "monitoring",
+        "resume_skill": "terraform",
+        "match_type": "related",
+        "strength": 0.75,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "mulesoft",
+        "resume_skill": "express",
+        "match_type": "domain",
+        "strength": 0.4,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "nlp",
+        "resume_skill": "deep learning (implied)",
+        "match_type": "implied",
+        "strength": 0.45,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "snowflake",
+        "resume_skill": "postgresql",
+        "match_type": "related",
+        "strength": 0.75,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "splunk",
+        "resume_skill": "devops (implied)",
+        "match_type": "implied",
+        "strength": 0.39,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "sql",
+        "resume_skill": "sql",
+        "match_type": "exact",
+        "strength": 1.0,
+        "priority": 0.5
+      },
+      {
+        "jd_skill": "workato",
+        "resume_skill": "ci/cd",
+        "match_type": "domain",
+        "strength": 0.4,
+        "priority": 0.5
+      }
+    ],
+    "missing_details": [
+      {
+        "skill": "scrum",
+        "priority": 1.0,
+        "is_required": true,
+        "suggested_related": []
+      }
+    ],
+    "domain_coverage": {
+      "cloud": {
+        "in_resume": [
+          "aws"
+        ],
+        "in_jd": [
+          "aws",
+          "azure",
+          "gcp"
+        ],
+        "overlap": [
+          "aws"
+        ],
+        "coverage": 0.333
+      },
+      "methodology": {
+        "in_resume": [],
+        "in_jd": [
+          "agile",
+          "scrum"
+        ],
+        "overlap": [],
+        "coverage": 0.0
+      },
+      "soft_skills": {
+        "in_resume": [
+          "leadership",
+          "communication"
+        ],
+        "in_jd": [
+          "documentation",
+          "communication",
+          "teamwork"
+        ],
+        "overlap": [
+          "communication"
+        ],
+        "coverage": 0.25
+      },
+      "frontend": {
+        "in_resume": [
+          "html",
+          "react",
+          "angular",
+          "css",
+          "tailwind",
+          "next.js"
+        ],
+        "in_jd": [],
+        "overlap": [],
+        "coverage": 0.0
+      },
+      "data": {
+        "in_resume": [
+          "sql",
+          "postgresql",
+          "redis",
+          "mongodb"
+        ],
+        "in_jd": [
+          "sql",
+          "dynamodb",
+          "bigquery",
+          "snowflake"
+        ],
+        "overlap": [
+          "sql"
+        ],
+        "coverage": 0.143
+      },
+      "architecture": {
+        "in_resume": [
+          "rest api",
+          "microservices"
+        ],
+        "in_jd": [
+          "rest api"
+        ],
+        "overlap": [
+          "rest api"
+        ],
+        "coverage": 0.5
+      },
+      "backend": {
+        "in_resume": [
+          "spring",
+          "node.js",
+          "spring boot",
+          "express"
+        ],
+        "in_jd": [
+          "node.js"
+        ],
+        "overlap": [
+          "node.js"
+        ],
+        "coverage": 0.25
+      },
+      "devops": {
+        "in_resume": [
+          "git",
+          "terraform",
+          "docker",
+          "github",
+          "ci/cd"
+        ],
+        "in_jd": [
+          "git",
+          "datadog",
+          "github",
+          "cloudwatch",
+          "splunk",
+          "ci/cd",
+          "monitoring"
+        ],
+        "overlap": [
+          "git",
+          "ci/cd",
+          "github"
+        ],
+        "coverage": 0.333
+      },
+      "integration": {
+        "in_resume": [],
+        "in_jd": [
+          "workato",
+          "mulesoft"
+        ],
+        "overlap": [],
+        "coverage": 0.0
+      },
+      "engineering": {
+        "in_resume": [
+          "testing"
+        ],
+        "in_jd": [
+          "testing"
+        ],
+        "overlap": [
+          "testing"
+        ],
+        "coverage": 1.0
+      },
+      "programming": {
+        "in_resume": [
+          "javascript",
+          "go",
+          "rust",
+          "java",
+          "typescript",
+          "python"
+        ],
+        "in_jd": [
+          "java",
+          "javascript",
+          "python"
+        ],
+        "overlap": [
+          "java",
+          "javascript",
+          "python"
+        ],
+        "coverage": 0.5
+      },
+      "ai_ml": {
+        "in_resume": [
+          "pytorch"
+        ],
+        "in_jd": [
+          "machine learning",
+          "nlp"
+        ],
+        "overlap": [],
+        "coverage": 0.0
+      }
+    },
+    "required_coverage": 84.6,
+    "preferred_coverage": 68.8
+  },
+  "semantic_analysis": {
+    "overall_score": 28.4,
+    "bullet_scores": [
+      {
+        "text": "Graduate Teaching Assistant (CS5610): Leading code reviews on React, Node.js, and MongoDB for 100+ students.",
+        "similarity": 46.1,
+        "strength": "moderate"
+      },
+      {
+        "text": "Built a serverless browser-based IDE using WebContainers for client-side Node.js execution, cutting cold-starts by 95%.",
+        "similarity": 38.4,
+        "strength": "weak"
+      },
+      {
+        "text": "Cut vendor onboarding from 2 weeks to under 3 hours by building a React administrative dashboard with granular RBAC,",
+        "similarity": 36.7,
+        "strength": "weak"
+      },
+      {
+        "text": "Accelerated environment provisioning from 16 hours to 15 minutes by crafting reusable Terraform modules for VPC and RDS",
+        "similarity": 36.1,
+        "strength": "weak"
+      },
+      {
+        "text": "Engineered a Chrome extension injecting contextual UI overlays on GitHub using Tree-sitter for AST extraction.",
+        "similarity": 31.2,
+        "strength": "weak"
+      },
+      {
+        "text": "Designed the editor UI with split-pane file explorer, integrated terminal, and live preview using React and Tailwind.",
+        "similarity": 30.1,
+        "strength": "weak"
+      },
+      {
+        "text": "Implemented Write-Ahead Log (WAL) ensuring durability and crash recovery with full data integrity on restart.",
+        "similarity": 29.8,
+        "strength": "weak"
+      },
+      {
+        "text": "Integrated real-time collaborative editing with Yjs (CRDT) and WebSockets, achieving sub-100ms convergence.",
+        "similarity": 26.9,
+        "strength": "weak"
+      },
+      {
+        "text": "Architected a time-series database in Rust with LSM-tree architecture, lock-free SkipLists, and SSTables.",
+        "similarity": 25.4,
+        "strength": "weak"
+      },
+      {
+        "text": "Deployed a Spring Cloud Gateway with Resilience4j circuit breakers and Redis-backed rate limiting, maintaining 99.8% uptime",
+        "similarity": 23.6,
+        "strength": "poor"
+      },
+      {
+        "text": "Built a Go API gateway (Fiber) for secure LLM request routing, achieving 90% test coverage via Jest.",
+        "similarity": 21.8,
+        "strength": "poor"
+      },
+      {
+        "text": "Top 1% on LeetCode \u2013 Ranked among 500k+ users with 900+ problems solved.",
+        "similarity": 21.1,
+        "strength": "poor"
+      },
+      {
+        "text": "Optimized cold-starts by 90% (5m to 30s) via parallelized indexing and WebSocket-based state streaming.",
+        "similarity": 19.3,
+        "strength": "poor"
+      },
+      {
+        "text": "1st Place Winner \u2013 World\u2019s First BCI Hackathon by Precision Neuroscience (Neural Decoding Track), 2026. Built an EEGNet",
+        "similarity": 16.4,
+        "strength": "poor"
+      },
+      {
+        "text": "Built a real-time notification UI consuming 5k+ concurrent WebSocket connections with Redis Pub/Sub, reducing delivery",
+        "similarity": 16.2,
+        "strength": "poor"
+      },
+      {
+        "text": "Applied Gorilla compression achieving 10:1 compression ratio and Bloom Filters to minimize disk I/O on reads.",
+        "similarity": 15.0,
+        "strength": "poor"
+      },
+      {
+        "text": "Engineered JWT authentication flows handling 10,000+ daily logins with Redis-cached blacklisting, token refresh logic, and",
+        "similarity": 13.4,
+        "strength": "poor"
+      },
+      {
+        "text": "Migrated LMS frontend from Angular to React with TypeScript, building 20+ reusable components with type-safe props,",
+        "similarity": 10.7,
+        "strength": "poor"
+      }
+    ]
+  },
+  "section_scores": [
+    {
+      "section": "experience",
+      "score": 58.7,
+      "strength": "moderate"
+    },
+    {
+      "section": "skills",
+      "score": 45.0,
+      "strength": "moderate"
+    },
+    {
+      "section": "projects",
+      "score": 35.2,
+      "strength": "weak"
+    },
+    {
+      "section": "education",
+      "score": 24.7,
+      "strength": "poor"
+    }
+  ],
+  "suggestions": [
+    {
+      "original": "Migrated LMS frontend from Angular to React with TypeScript, building 20+ reusable components with type-safe props,",
+      "improved": "Migrated LMS frontend from Angular to React with TypeScript, building 20+ reusable components with type-safe props",
+      "issues": [
+        "Could benefit from stronger action verbs and more specific results"
+      ]
+    },
+    {
+      "original": "Engineered JWT authentication flows handling 10,000+ daily logins with Redis-cached blacklisting, token refresh logic, and",
+      "improved": "Configured \u2014 engineered JWT authentication flows handling 10,000+ daily logins with Redis-cached blacklisting, token refresh logic, and",
+      "issues": [
+        "Could benefit from stronger action verbs and more specific results"
+      ]
+    },
+    {
+      "original": "Applied Gorilla compression achieving 10:1 compression ratio and Bloom Filters to minimize disk I/O on reads.",
+      "improved": "Designed \u2014 applied Gorilla compression achieving 10:1 compression ratio and Bloom Filters to minimize disk I/O on reads.",
+      "issues": [
+        "Could benefit from stronger action verbs and more specific results"
+      ]
+    },
+    {
+      "original": "Built a real-time notification UI consuming 5k+ concurrent WebSocket connections with Redis Pub/Sub, reducing delivery",
+      "improved": "Accelerated \u2014 built a real-time notification UI consuming 5k+ concurrent WebSocket connections with Redis Pub/Sub, reducing delivery",
+      "issues": [
+        "Could benefit from stronger action verbs and more specific results"
+      ]
+    },
+    {
+      "original": "1st Place Winner \u2013 World\u2019s First BCI Hackathon by Precision Neuroscience (Neural Decoding Track), 2026. Built an EEGNet",
+      "improved": "Architected \u2014 1st Place Winner \u2013 World\u2019s First BCI Hackathon by Precision Neuroscience (Neural Decoding Track), 2026. Built an EEGNet",
+      "issues": [
+        "Could benefit from stronger action verbs and more specific results"
+      ]
+    }
+  ]
+}

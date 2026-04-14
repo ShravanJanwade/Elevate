@@ -16,3 +16,11 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Environment
+.env
+
+# Large Assets
+backend/data/
+*.safetensors
+frontend/dist/
